@@ -6,15 +6,26 @@ var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Calculon";
+var enemyNames = ["Calculon", "Robot Devil", "187-2"]; 
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-console.log(enemyName, enemyAttack, enemyHealth);
+console.log(enemyNames, enemyAttack, enemyHealth);
+for(var i = 0; i < enemyNames.length; i++) {
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + " is at " + " index");
+}
+ 
+            // Game States
+            // "WIN" - Player robot has defeated all enemy-robots
+            //    * Fight all enemy-robots
 
-// Alert players that they are starting the round
 
-var fight = function() {
+
+                // Alert players that they are starting the round
+
+var fight = function(enemyName) {
     window.alert("Welcome to Robot Gladiators!");
     var promptFight =  window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to chose.");
     if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -50,7 +61,7 @@ if (playerHealth <= 0) {
         window.alert(playerName + " still has " + playerHealth + " health left. " + playerMoney + " Dollars");
     }
 
-                        // SKIP FIGHT
+                    // SKIP FIGHT
 
 } else if (promptFight === "skip" || promptFight === "SKIP") {
   var confirmSkip = window.confirm("Are you sure you'd like to quit?");
@@ -66,5 +77,7 @@ if (playerHealth <= 0) {
 }
 };
 
- fight()
+for(var i =0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+} 
 
