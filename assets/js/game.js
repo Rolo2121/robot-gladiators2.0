@@ -30,7 +30,7 @@ var startGame = function() {
 
             var pickedEnemyName = enemyNames[i];
 
-            enemyHealth = 50;
+            enemyHealth = randomNumber(40, 60);
             fight(pickedEnemyName);
             if (playerHealth > 0 && i < enemyNames.length - 1){
                 var storeConfirm = window.confirm("The fight is over, visit the store before the next roung?");
@@ -115,13 +115,14 @@ var fight = function(enemyName) {
 
       if (confirmSkip) {
         window.alert(playerName + ' has decided to skip this fight. Goodbye!');
-        playerMoney = playerMoney - 10;
+        playerMoney = Math.max(0, playerMoney - 10);
         console.log("playerMoney", playerMoney);
         break;
       }
     }
+    var damage = randomNumber(playerAttack - 3, playerAttack);
 
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - damage);
     console.log(
       playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
     );
@@ -135,8 +136,8 @@ var fight = function(enemyName) {
     } else {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
     }
-
-    playerHealth = playerHealth - enemyAttack;
+    var damage = randomNumber(playerAttack - 3, playerAttack);
+    playerHealth = Math.max(0, playerHealth - damage);
     console.log(
       enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
     );
